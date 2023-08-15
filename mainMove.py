@@ -3,25 +3,28 @@ import keyboard
 import time
 
 # Initialize the Tello object
-tello = Tello.Tello()
+# line 7 creates an instance of the tello class and creates the connection to the drone 
+tello = Tello.Tello() 
 
+
+# takeoff_and_land() that is responsible for taking off the drone, keeping it in the air for a few seconds, and then landing it
 def takeoff_and_land():
     response = tello.takeoff()
     print("Takeoff response:", response)
-    time.sleep(120)  # Keep the drone in the air for 5 seconds
+    time.sleep(120)  # Keeping the drone in the air for 120 seconds(2 min)
     response = tello.land()
     print("Land response:", response)
 
 def move_up():
-    response = tello.up(50)  # Replace 50 with the desired distance in cm
+    response = tello.up(50)  
     print("Up response:", response)
 
 def move_forward():
-    response = tello.forward(100)  # Replace 100 with the desired distance in cm
+    response = tello.forward(100)  
     print("Forward response:", response)
 
 def rotate_clockwise():
-    response = tello.rotate('cw', 90)  # Rotate 90 degrees clockwise
+    response = tello.rotate('cw', 90)  # this is Rotating the drone 90 degrees clockwise
     print("Rotate response:", response)
 
 def flip():
