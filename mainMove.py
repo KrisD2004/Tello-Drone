@@ -23,6 +23,14 @@ def move_forward():
     response = tello.forward(100)  
     print("Forward response:", response)
 
+def move_left():
+    response = tello.left(100)  
+    print("Left response:", response)
+
+def move_right():
+    response = tello.right(100)  # Replace 50 with the desired distance in cm
+    print("Right response:", response)    
+
 def rotate_clockwise():
     response = tello.rotate('cw', 90)  # this is Rotating the drone 90 degrees clockwise
     print("Rotate response:", response)
@@ -31,13 +39,18 @@ def flip():
     response = tello.flip('f')  # Replace 'f' with the desired flip direction
     print("Flip response:", response)
 
+def move_backward():
+    response = tello.back(100)
+    print("Backward response:", response)
+
 def main():
     print("Press the following keys to control the drone:")
     print("  - 't' to take off and land")
     print("  - 'u' to move up")
     print("  - 'f' to move forward")
+    print("  - 'b' to move backward")
     print("  - 'r' to rotate clockwise")
-    print("  - 'l' to perform a flip")
+    print("  - 'p' to perform a flip")
     print("  - 'q' to quit")
 
     while True:
@@ -47,9 +60,11 @@ def main():
             move_up()
         elif keyboard.is_pressed('f'):
             move_forward()
+        elif keyboard.is_pressed('b'):  
+            move_backward()
         elif keyboard.is_pressed('r'):
             rotate_clockwise()
-        elif keyboard.is_pressed('l'):
+        elif keyboard.is_pressed('p'):
             flip()
         elif keyboard.is_pressed('q'):
             break
