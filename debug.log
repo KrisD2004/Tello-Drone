@@ -1,0 +1,14 @@
+23:03:26 [INFO] -------------------------------------- 
+23:03:26 [INFO] _________  ____                  ____  
+23:03:26 [INFO]     |      |      |      |      |    | 
+23:03:26 [INFO]     |      |___   |      |      |    | 
+23:03:26 [INFO]     |      |      |      |      |    | 
+23:03:26 [INFO]     |      |____  |____  |____  |____|
+ 
+23:03:26 [INFO]              Drone Script              
+23:03:26 [INFO] -------------------------------------- 
+23:03:26 [INFO]           Checking network...         
+ 
+23:03:27 [WARNING] It seems like you have not joined the TELLO- or RMTT-network. Please make sure that you have joined the TELLO- or RMTT- Wi-Fi. 
+23:03:27 [INFO]          Making UDP socket...         
+ 
