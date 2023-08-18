@@ -27,6 +27,8 @@ python main.py
 * 't': Take off and land
 * 'u': Move up
 * 'f': Move forward
+* 'b': move backward
 * 'r': Rotate clockwise
-* 'l': Perform a flip
+* 'p': perfrom a flip
+* 'l': Perform a land
 * 'q': Quit the program

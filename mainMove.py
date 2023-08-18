@@ -56,11 +56,7 @@ def move_backward():
     response = tello.back(100)
     print("Backward response:", response)
 
-# try:
-#     response = tello.takeoff()
-#     print("Takeoff response:", response)
-# except Exception as e:
-#     print("Error during takeoff:", str(e))
+
 
 def main():
     print("Press the following keys to control the drone:")
