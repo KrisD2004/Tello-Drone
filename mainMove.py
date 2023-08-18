@@ -6,6 +6,9 @@ import time
 # line 7 creates an instance of the tello class and creates the connection to the drone 
 tello = Tello.Tello() 
 
+tello.init()
+
+
 
 # takeoff_and_land() that is responsible for taking off the drone, keeping it in the air for a few seconds, and then landing it
 def takeoff_and_land():
@@ -42,6 +45,12 @@ def flip():
 def move_backward():
     response = tello.back(100)
     print("Backward response:", response)
+
+# try:
+#     response = tello.takeoff()
+#     print("Takeoff response:", response)
+# except Exception as e:
+#     print("Error during takeoff:", str(e))
 
 def main():
     print("Press the following keys to control the drone:")
