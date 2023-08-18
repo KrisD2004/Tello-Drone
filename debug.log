@@ -9,3 +9,7 @@
 11:34:40 [INFO] -------------------------------------- 
 11:34:40 [INFO]           Checking network...         
  
+11:34:41 [INFO]          Making UDP socket...         
+ 
+11:37:05 [WARNING] Command timed out. 
+11:37:51 [WARNING] Command timed out. 
