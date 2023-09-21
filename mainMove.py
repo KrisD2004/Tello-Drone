@@ -6,7 +6,7 @@ import time
 # line 7 creates an instance of the tello class and creates the connection to the drone 
 tello = Tello.Tello() 
 
-# initalize connection
+# initalizing the connection
 tello.init()
 
 
@@ -23,6 +23,10 @@ def take_off():
     response = tello.takeoff()
     print("Takeoff response:", response)
 
+def hover():
+    response = tello.hover()
+    print("hover response:", response)
+
 # Function to land the drone
 def land():
     response = tello.land()
@@ -31,6 +35,11 @@ def land():
 def move_up():
     response = tello.up(50)  
     print("Up response:", response)
+
+def move_down():
+    response = tello.down(50)
+    print("Down response:", response)
+    
 
 def move_forward():
     response = tello.forward(100)  
@@ -41,7 +50,7 @@ def move_left():
     print("Left response:", response)
 
 def move_right():
-    response = tello.right(100)  # Replace 50 with the desired distance in cm
+    response = tello.right(100)  # Replacing the 50 with the new distance in cm
     print("Right response:", response)    
 
 def rotate_clockwise():
@@ -49,7 +58,7 @@ def rotate_clockwise():
     print("Rotate response:", response)
 
 def flip():
-    response = tello.flip('f')  # Replace 'f' with the desired flip direction
+    response = tello.flip('f')  
     print("Flip response:", response)
 
 def move_backward():
@@ -59,21 +68,27 @@ def move_backward():
 
 
 def main():
-    print("Press the following keys to control the drone:")
+    print("Press the keys to control the drone:")
     print("  - 't' to take off")
+    print("h to move hover")
     print("  - 'u' to move up")
+    print(" d to move down")
     print("  - 'f' to move forward")
     print("  - 'b' to move backward")
     print("  - 'r' to rotate clockwise")
     print("  - 'p' to perform a flip")
-    print("press L to land")
+    print("  - press L to land")
     print("  - 'q' to quit")
 
     while True:
         if keyboard.is_pressed('t'):
             take_off()
+        elif keyboard.is_pressed('h'):
+            hover()
         elif keyboard.is_pressed('u'):
             move_up()
+        elif keyboard.is_pressed('d'):
+            move_down()
         elif keyboard.is_pressed('f'):
             move_forward()
         elif keyboard.is_pressed('b'):  
@@ -84,6 +99,7 @@ def main():
             flip()
         elif keyboard.is_pressed('L'):
             land()    
+            break
         elif keyboard.is_pressed('q'):
             break
 
