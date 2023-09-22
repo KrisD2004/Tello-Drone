@@ -80,6 +80,14 @@ def figure_eight():
         response = tello.rotate('ccw', 90)  # Rotate 90 degrees counterclockwise
         print("Rotate response:", response)
 
+def barrel_roll():
+    # Perform a barrel roll by combining roll and yaw commands
+    response = tello.roll('right', 360)  # Roll right 360 degrees
+    print("Roll response:", response)
+    time.sleep(1)  # Wait for the roll to complete
+    response = tello.rotate('cw', 360)  # Rotate 360 degrees clockwise (yaw)
+    print("Rotate response:", response)
+
 def move_backward():
     response = tello.back(100)
     print("Backward response:", response)
@@ -90,8 +98,8 @@ def main():
     print("Press the keys to control the drone:")
     print("  - 't' to take off")
     print("h to move hover")
-    print("  - 'u' to move up")
-    print(" d to move down")
+    print("  - 'i' to move up")
+    print(" - 'k' to move down")
     print("  - 'w' to move forward")
     print("  - 's' to move backward")
     print(" - 'a' to turn left")
@@ -100,6 +108,7 @@ def main():
     print("  - 'f' to perform a flip")
     print("  - 'c' to circle around an object")
     print("  - 'e' to fly in a figure-eight pattern")
+    print(" - 'b' to barrel roll")
     print("  - press L to land")
     print("  - 'q' to quit")
 
@@ -127,7 +136,9 @@ def main():
         elif keyboard.is_pressed('c'):
             circle_around_object()
         elif keyboard.is_pressed('e'):
-            figure_eight()    
+            figure_eight() 
+        elif keyboard.is_pressed == 'b':
+            barrel_roll()       
         elif keyboard.is_pressed('L'):
             land()    
             break
