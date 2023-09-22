@@ -97,7 +97,7 @@ def move_backward():
 def main():
     print("Press the keys to control the drone:")
     print("  - 't' to take off")
-    print("h to move hover")
+    print(" - 'h' to move hover")
     print("  - 'i' to move up")
     print(" - 'k' to move down")
     print("  - 'w' to move forward")
@@ -109,7 +109,7 @@ def main():
     print("  - 'c' to circle around an object")
     print("  - 'e' to fly in a figure-eight pattern")
     print(" - 'b' to barrel roll")
-    print("  - press L to land")
+    print("  - press 'L' to land")
     print("  - 'q' to quit")
 
     while True:
@@ -137,7 +137,7 @@ def main():
             circle_around_object()
         elif keyboard.is_pressed('e'):
             figure_eight() 
-        elif keyboard.is_pressed == 'b':
+        elif keyboard.is_pressed == ('b'):
             barrel_roll()       
         elif keyboard.is_pressed('L'):
             land()    
