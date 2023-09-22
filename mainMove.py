@@ -61,6 +61,25 @@ def flip():
     response = tello.flip('f')  
     print("Flip response:", response)
 
+def circle_around_object():
+    for _ in range(4):
+        response = tello.forward(50)  # Move forward
+        print("Forward response:", response)
+        response = tello.rotate('cw', 90)  # Rotate 90 degrees clockwise
+        print("Rotate response:", response)
+
+def figure_eight():
+    for _ in range(2):
+        # Loop to complete one loop of the figure-eight
+        response = tello.forward(50)  # Move forward
+        print("Forward response:", response)
+        response = tello.rotate('cw', 45)  # Rotate 45 degrees clockwise
+        print("Rotate response:", response)
+        response = tello.forward(50)  # Move forward
+        print("Forward response:", response)
+        response = tello.rotate('ccw', 90)  # Rotate 90 degrees counterclockwise
+        print("Rotate response:", response)
+
 def move_backward():
     response = tello.back(100)
     print("Backward response:", response)
@@ -73,10 +92,14 @@ def main():
     print("h to move hover")
     print("  - 'u' to move up")
     print(" d to move down")
-    print("  - 'f' to move forward")
-    print("  - 'b' to move backward")
+    print("  - 'w' to move forward")
+    print("  - 's' to move backward")
+    print(" - 'a' to turn left")
+    print(" - 'd' to turn right")
     print("  - 'r' to rotate clockwise")
-    print("  - 'p' to perform a flip")
+    print("  - 'f' to perform a flip")
+    print("  - 'c' to circle around an object")
+    print("  - 'e' to fly in a figure-eight pattern")
     print("  - press L to land")
     print("  - 'q' to quit")
 
@@ -85,18 +108,26 @@ def main():
             take_off()
         elif keyboard.is_pressed('h'):
             hover()
-        elif keyboard.is_pressed('u'):
+        elif keyboard.is_pressed('i'):
             move_up()
-        elif keyboard.is_pressed('d'):
+        elif keyboard.is_pressed('k'):
             move_down()
-        elif keyboard.is_pressed('f'):
+        elif keyboard.is_pressed('a'):
+            move_left    
+        elif keyboard.is_pressed('d'):
+            move_right    
+        elif keyboard.is_pressed('w'):
             move_forward()
-        elif keyboard.is_pressed('b'):  
+        elif keyboard.is_pressed('s'):  
             move_backward()
         elif keyboard.is_pressed('r'):
             rotate_clockwise()
-        elif keyboard.is_pressed('p'):
+        elif keyboard.is_pressed('f'):
             flip()
+        elif keyboard.is_pressed('c'):
+            circle_around_object()
+        elif keyboard.is_pressed('e'):
+            figure_eight()    
         elif keyboard.is_pressed('L'):
             land()    
             break
