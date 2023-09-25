@@ -91,7 +91,7 @@ def move_backward():
 def main():
     print("Press the keys to control the drone:")
     print("  - 't' to take off")
-    print("h to move hover")
+    print(" - 'h' to move hover")
     print("  - 'i' to move up")
     print(" - 'k' to move down")
     print("  - 'w' to move forward")
