@@ -6,7 +6,7 @@ import time
 # line 7 creates an instance of the tello class and creates the connection to the drone 
 tello = Tello.Tello() 
 
-# initalizing the connection
+# initalizing the coqnnection
 tello.init()
 
 
@@ -80,13 +80,7 @@ def figure_eight():
         response = tello.rotate('ccw', 90)  # Rotate 90 degrees counterclockwise
         print("Rotate response:", response)
 
-def barrel_roll():
-    # Perform a barrel roll by combining roll and yaw commands
-    response = tello.roll('right', 360)  # Roll right 360 degrees
-    print("Roll response:", response)
-    time.sleep(1)  # Wait for the roll to complete
-    response = tello.rotate('cw', 360)  # Rotate 360 degrees clockwise (yaw)
-    print("Rotate response:", response)
+
 
 def move_backward():
     response = tello.back(100)
@@ -108,7 +102,6 @@ def main():
     print("  - 'f' to perform a flip")
     print("  - 'c' to circle around an object")
     print("  - 'e' to fly in a figure-eight pattern")
-    print(" - 'b' to barrel roll")
     print("  - press L to land")
     print("  - 'q' to quit")
 
@@ -136,9 +129,7 @@ def main():
         elif keyboard.is_pressed('c'):
             circle_around_object()
         elif keyboard.is_pressed('e'):
-            figure_eight() 
-        elif keyboard.is_pressed == 'b':
-            barrel_roll()       
+            figure_eight()      
         elif keyboard.is_pressed('L'):
             land()    
             break
