@@ -15,7 +15,6 @@ tello.init()
 # def takeoff_and_land():
 #     response = tello.takeoff()
 #     print("Takeoff response:", response)
-#     time.sleep(120)  # Keeping the drone in the air for 120 seconds(2 min)
 #     response = tello.land()
 #     print("Land response:", response)
 
