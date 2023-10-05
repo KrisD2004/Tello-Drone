@@ -26,9 +26,14 @@ python main.py
 
 * 't': Take off and land
 * 'u': Move up
-* 'f': Move forward
-* 'b': move backward
+* 'w': Move forward
+* 's': move backward
+* 'a': move left
+* 'd': move right
 * 'r': Rotate clockwise
-* 'p': perfrom a flip
+* 'f': perfrom a flip
+* 'c': circle object
+* 'e': figure 8 pattern
+* 'b': to barrel roll
 * 'l': Perform a land
 * 'q': Quit the program
