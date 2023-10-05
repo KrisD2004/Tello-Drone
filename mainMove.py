@@ -1,12 +1,68 @@
 from tello_sdk import Tello
 import keyboard
 import time
+import cv2
+
 
 # Initialize the Tello object
 tello = Tello.Tello() 
 
 # Initialize the connection
 tello.init()
+
+def video_stream_on():
+    response = tello.video_stream_on()
+    print("Video stream on response:", response)
+
+# Function to turn off the video stream
+def video_stream_off():
+    response = tello.video_stream_off()
+    print("Video stream off response:", response)
+
+def set_video_fps_high():
+    response = tello.set_fps('high')
+    print("Set video FPS to high response:", response)
+
+# Function to set the video stream resolution to high
+def set_video_resolution_high():
+    response = tello.set_resolution('high')
+    print("Set video resolution to high response:", response)
+
+# Function to set the video stream bitrate to 0 (automatic)
+def set_video_bitrate_auto():
+    response = tello.set_bitrate(0)
+    print("Set video bitrate to automatic response:", response)
+
+# Function to create a video window and display the video feed
+def video_stream_on():
+    response = tello.video_stream_on()
+    print("Video stream on response:", response)
+
+# Function to stop video streaming
+def video_stream_off():
+    response = tello.video_stream_off()
+    print("Video stream off response:", response)
+
+# Function to display the video stream
+def display_video_stream():
+    # Use the correct IP and port for video streaming (Tello's default is 0.0.0.0:11111)
+    cap = cv2.VideoCapture('udp://0.0.0.0:11111')
+    cv2.namedWindow("Tello Video Stream", cv2.WINDOW_NORMAL)
+
+    while True:
+        ret, frame = cap.read()
+
+        if not ret:
+            print("Error: Could not read frame.")
+            break
+
+        cv2.imshow("Tello Video Stream", frame)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
 
 # Function to take off
 def take_off():
@@ -100,6 +156,8 @@ def main():
     print("  - 'c' to circle around an object")
     print("  - 'e' to fly in a figure-eight pattern")
     print("  - 'L' to land")
+    print("  - 'v' to start video stream")
+    print("  - 'V' to stop video stream")
     print("  - 'q' to quit")
 
     while True:
@@ -128,8 +186,11 @@ def main():
         elif keyboard.is_pressed('e'):
             figure_eight()      
         elif keyboard.is_pressed('L'):
-            land()    
-            break
+            land()  
+        elif keyboard.is_pressed('v'):
+            video_stream_on()
+            display_video_stream()
+            video_stream_off()
         elif keyboard.is_pressed('q'):
             break
 
