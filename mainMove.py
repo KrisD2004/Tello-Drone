@@ -4,7 +4,7 @@ import time
 
 # Initialize the Tello object
 # line 7 creates an instance of the tello class and creates the connection to the drone 
-tello = Tello.Tello() 
+tello = Tello.Tello()
 
 # initalize connection
 tello.init()
