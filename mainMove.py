@@ -2,6 +2,8 @@ from tello_sdk import Tello
 import keyboard
 import time
 import cv2
+import numpy as np
+
 
 
 # Initialize the Tello object
@@ -43,8 +45,11 @@ def video_stream_off():
     response = tello.video_stream_off()
     print("Video stream off response:", response)
 
+fourcc = cv2.VideoWriter_fourcc(*'MJPG')
+out = cv2.VideoWriter('output.avi', fourcc, 20.0, (960, 720))
+
 # Function to display the video stream
-def display_video_stream():
+def display_and_record_video():
     # Use the correct IP and port for video streaming (Tello's default is 0.0.0.0:11111)
     cap = cv2.VideoCapture('udp://0.0.0.0:11111')
     cv2.namedWindow("Tello Video Stream", cv2.WINDOW_NORMAL)
@@ -56,14 +61,17 @@ def display_video_stream():
             print("Error: Could not read frame.")
             break
 
+        # Save the frame to the video file
+        out.write(frame)
+
         cv2.imshow("Tello Video Stream", frame)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()
+    out.release()  # Release the VideoWriter object
     cv2.destroyAllWindows()
-
 # Function to take off
 def take_off():
     response = tello.takeoff()
@@ -189,7 +197,7 @@ def main():
             land()  
         elif keyboard.is_pressed('v'):
             video_stream_on()
-            display_video_stream()
+            display_and_record_video()
             video_stream_off()
         elif keyboard.is_pressed('q'):
             break
