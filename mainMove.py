@@ -3,7 +3,7 @@ import keyboard
 import time
 import cv2
 import numpy as np
-
+from pynput.mouse import Controller
 
 
 # Initialize the Tello object
@@ -148,17 +148,44 @@ def figure_eight():
         response = tello.rotate('ccw', 90)  # Rotate 90 degrees counterclockwise
         print("Rotate response:", response)
 
+mouse = Controller()
+
+# Function to move the mouse up
+def move_mouse_up():
+    mouse.move(0, -10)  # Adjust the values to control the distance and direction
+
+# Function to move the mouse down
+def move_mouse_down():
+    mouse.move(0, 10)  # Adjust the values to control the distance and direction
+
+# Function to move the mouse left
+def move_mouse_left():
+    mouse.move(-10, 0)  # Adjust the values to control the distance and direction
+
+# Function to move the mouse right
+def move_mouse_right():
+    mouse.move(10, 0)  # Adjust the values to control the distance and direction
+
+# Function to simulate a left mouse click
+def left_click():
+    mouse.click(Controller.Button.left)
+
+# Function to simulate a right mouse click
+def right_click():
+    mouse.click(Controller.Button.right)
+
+
 # Main control loop
 def main():
-    print("Press the keys to control the drone:")
+    print("Press the keys or move the mouse to control the drone:")
     print("  - 't' to take off")
     print("  - 'h' to hover")
     print("  - 'i' to move up")
     print("  - 'k' to move down")
-    print("  - 'w' to move forward")
-    print("  - 's' to move backward")
     print("  - 'a' to turn left")
     print("  - 'd' to turn right")
+    print("  - 'w' to move forward")
+    print("  - 's' to move backward")
     print("  - 'r' to rotate clockwise")
     print("  - 'f' to perform a flip")
     print("  - 'c' to circle around an object")
@@ -201,6 +228,22 @@ def main():
             video_stream_off()
         elif keyboard.is_pressed('q'):
             break
+
+        # Check for mouse movement
+        # You can customize these conditions to perform actions based on mouse movement
+        if mouse.position_has_changed():
+            # Example: Move the drone up when the mouse is moved up
+            if mouse.has_moved_up():
+                move_up()
+            # Example: Move the drone down when the mouse is moved down
+            elif mouse.has_moved_down():
+                move_down()
+            # Example: Turn the drone left when the mouse is moved left
+            elif mouse.has_moved_left():
+                move_left()
+            # Example: Turn the drone right when the mouse is moved right
+            elif mouse.has_moved_right():
+                move_right()
 
 if __name__ == "__main__":
     main()
